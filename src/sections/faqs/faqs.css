@@ -1,0 +1,98 @@
+.faqs__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 1.5rem; /* Consistent gap between items */
+    align-items: start;
+    perspective: 1000px; /* Enables 3D effect on child elements */
+    padding: 2rem; /* Add padding around the container */
+}
+
+.card.faq {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: var(--color-light-gray);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Box border */
+    position: relative; /* Required for pseudo-element */
+    overflow: hidden; /* Prevents overflowing content */
+}
+
+.card.faq:hover {
+    cursor: pointer;
+    transform: scale(1.05) rotateY(5deg); /* 3D hover effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: var(--color-white);
+}
+
+.faq > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.faq h5 {
+    line-height: 1.4;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-black);
+    transition: color 0.3s ease;
+}
+
+.faq:hover h5 {
+    color: var(--color-primary);
+}
+
+.faq__icon {
+    font-size: 1.5rem;
+    color: var(--color-black);
+    background: transparent;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.card.faq:hover .faq__icon {
+    transform: rotate(360deg);
+    color: var(--color-primary);
+}
+
+.faq__answer {
+    margin-top: 1rem;
+    opacity: 0;
+    animation: animateAnswer 500ms ease-in forwards;
+    transform-origin: top;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+@keyframes animateAnswer {
+    from {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateX(0);
+        opacity: 1;
+    }
+}
+
+/* MEDIA QUERIES (tablets) */
+@media screen and (max-width: 1024px) {
+    .faqs__container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Smaller columns for tablets */
+        gap: 1.5rem; /* Adjust gap for tablets */
+    }
+}
+
+/* MEDIA QUERIES (phones) */
+@media screen and (max-width: 600px) {
+    .faqs__container {
+        grid-template-columns: 1fr; /* Single column layout on phones */
+        gap: 1rem; /* Reduce gap on phones */
+    }
+
+    .card.faq {
+        padding: 1rem;
+        transform: none; /* Disables 3D effect on smaller screens */
+    }
+}

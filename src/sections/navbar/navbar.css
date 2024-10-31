@@ -1,0 +1,198 @@
+:root {
+    --color-primary: #d45d00; /* Rich burnt orange for the nav background */
+    --color-hover: #f57c20; /* Darker orange on hover */
+    --color-light: #f3e5ab; /* Light cream color */
+    --color-white: #ffffff; /* White for text */
+    --color-shadow: rgba(0, 0, 0, 0.5); /* Shadow color */
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #121212; /* Dark background for contrast */
+}
+
+/* NAVIGATION STYLES */
+nav {
+    width: 100vw;
+    height: 5rem;
+    display: grid;
+    place-items: center;
+    background: var(--color-primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    box-shadow: 0 1rem 3rem var(--color-shadow);
+    transition: background 0.4s ease, box-shadow 0.4s ease; /* Smooth transitions */
+    animation: fadeIn 0.5s ease; /* Fade-in effect on load */
+}
+
+nav:hover {
+    background: var(--color-hover);
+    box-shadow: 0 2rem 10rem rgba(0, 0, 0, 0.5);
+}
+
+.nav__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease; /* Transition for the container */
+}
+
+/* Logo */
+.nav__logo {
+    width: 2.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    animation: logoBounce 1s infinite; /* Logo bounce animation */
+}
+
+/* Menu */
+.nav__menu {
+    display: flex;
+    gap: 3.5rem; /* Space between menu items */
+}
+
+.nav__menu a {
+    color: var(--color-white);
+    font-weight: 600;
+    text-shadow: 1px 1px 2px var(--color-shadow);
+    padding: 0.5rem 1rem; /* Padding for better clickability */
+    border-radius: 5px; /* Rounded corners for links */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    position: relative; /* Required for the pseudo-element */
+    overflow: hidden; /* Hide the pseudo-element overflow */
+}
+
+.nav__menu a:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1); /* Light overlay effect */
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    transform: translate(-50%, -50%) scale(0); /* Initially hidden */
+    z-index: 0; /* Behind the text */
+}
+
+.nav__menu a:hover:before {
+    transform: translate(-50%, -50%) scale(1); /* Scale up on hover */
+}
+
+.nav__menu a:hover {
+    color: var(--color-light); /* Light cream color on hover */
+    transform: translateY(-5px) rotate(5deg) scale(1.1) perspective(1000px); /* 3D pop effect */
+    filter: drop-shadow(0 0 10px var(--color-shadow)); /* Glow effect on hover */
+    animation: linkPulse 0.5s ease-in-out forwards, shake 0.5s ease forwards; /* Link pulse and shake effect */
+}
+
+#theme__icon {
+    background: transparent;
+    color: var(--color-white);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease; /* Transition for the icon */
+}
+
+#theme__icon:hover {
+    transform: rotate(360deg) scale(1.2); /* Rotate and scale effect on hover */
+    color: var(--color-light); /* Change color on hover */
+}
+
+/* HIDE NAV MENU ON TABLETS AND PHONES */
+@media screen and (max-width: 1024px) {
+    .nav__menu {
+        display: none; /* Hide on smaller screens */
+    }
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes logoBounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px); /* Bounce effect */
+    }
+    60% {
+        transform: translateY(-5px); /* Smaller bounce effect */
+    }
+}
+
+@keyframes linkPulse {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px) scale(1.05); /* Pulsing effect */
+    }
+}
+
+@keyframes shake {
+    0% { transform: translate(0); }
+    25% { transform: translate(-2px, -2px); }
+    50% { transform: translate(2px, 2px); }
+    75% { transform: translate(-2px, 2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Add animation to nav container on page load */
+.nav__container {
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+/* Enhanced 3D Hover Effect */
+.nav__menu a {
+    perspective: 1000px; /* Add perspective for 3D */
+}
+
+.nav__menu a:hover {
+    transform: rotateY(10deg) scale(1.1); /* Slight 3D rotation */
+}
+
+/* Glow Effect on Hover */
+nav:hover .nav__menu a {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)); /* Enhanced glow effect */
+}
+
+/* Responsive Design Enhancements */
+@media screen and (max-width: 600px) {
+    nav {
+        height: 4rem; /* Reduced height on small screens */
+    }
+
+    .nav__menu a {
+        font-size: 0.9rem; /* Smaller font size for mobile */
+    }
+
+    .nav__logo {
+        width: 2rem; /* Smaller logo on mobile */
+        height: 2rem;
+    }
+}

@@ -1,0 +1,141 @@
+:root {
+    --color-primary: #ff6f61; /* Primary Color */
+    --color-secondary: #6b5b95; /* Secondary Color */
+    --color-background: #121212; /* Dark background for contrast */
+    --border-radius-1: 10px; /* Border radius for buttons */
+    --box-shadow-color: rgba(0, 0, 0, 0.15); /* Shadow color */
+}
+
+body {
+    background-color: var(--color-background);
+    color: #ffffff;
+    font-family: 'Arial', sans-serif; /* Default font */
+}
+
+/* Container for the contact section */
+.contact__container {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    perspective: 1000px; /* Enables 3D effect on child elements */
+    padding: 2rem; /* Add padding around the container */
+    margin: auto; /* Center the container */
+    animation: fadeIn 1s ease; /* Fade in animation for the entire container */
+}
+
+/* Style for each contact link */
+.contact__container a {
+    width: 5rem;
+    aspect-ratio: 1/1;
+    color: white;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); /* Gradient background */
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-1);
+    box-shadow: 0 4px 10px var(--box-shadow-color); /* Subtle shadow */
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    will-change: transform, background, color; /* Optimize for performance */
+    position: relative; /* Needed for the ripple effect */
+}
+
+/* Hover effects for links */
+.contact__container a:hover {
+    background: transparent; /* Change background on hover */
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-0.5rem) rotateY(10deg); /* 3D hover effect */
+    box-shadow: 0 0 20px var(--color-primary), 0 0 30px var(--color-primary); /* Glowing effect */
+    animation: bounce 0.5s ease; /* Bounce animation on hover */
+}
+
+/* Active state for links */
+.contact__container a:active {
+    transform: translateY(0) rotateY(0); /* Reset on click */
+}
+
+/* Adding pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Fade-in animation for the container */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bounce animation on hover */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Ripple effect on click */
+.contact__container a::after {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2); /* Light color for ripple */
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    transition: transform 0.5s ease;
+    z-index: 0;
+}
+
+/* Ripple effect animation */
+@keyframes ripple {
+    to {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* MEDIA QUERIES (tablets) */
+@media screen and (max-width: 1024px) {
+    .contact__container {
+        gap: 2rem; /* Adjust gap for tablets */
+    }
+
+    .contact__container a {
+        width: 4rem; /* Adjust size for smaller screens */
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+}
+
+/* MEDIA QUERIES (phones) */
+@media screen and (max-width: 600px) {
+    .contact__container {
+        gap: 1.5rem; /* Adjust gap for phones */
+    }
+
+    .contact__container a {
+        width: 3rem; /* Adjust size for smaller screens */
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+}

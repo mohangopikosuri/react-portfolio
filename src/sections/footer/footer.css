@@ -1,0 +1,113 @@
+footer {
+    background: var(--color-primary);
+    padding-top: 8rem;
+    box-shadow: 0 -1rem 1.5rem hsla(var(--primary-hue), 68%, 42%, 20%);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px; /* Enables 3D effect for child elements */
+}
+
+footer .nav__menu {
+    justify-content: center;
+    display: flex; /* Align menu items in a row */
+    list-style: none; /* Removes default list styles */
+}
+
+footer .nav__menu li {
+    margin: 0 1rem; /* Adds spacing between menu items */
+}
+
+footer .nav__menu a {
+    text-decoration: none; /* Removes underline */
+    color: white; /* Text color */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+footer .nav__menu a:hover {
+    color: var(--color-primary); /* Change to primary color on hover */
+    transform: scale(1.1); /* Slightly enlarge the link */
+}
+
+.footer__socials {
+    width: fit-content;
+    display: flex;
+    gap: 1.5rem;
+    margin: 3rem auto 4rem;
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation for social icons */
+}
+
+.footer__socials a {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 0.6rem;
+    border-radius: var(--border-radius-3);
+    display: inline-flex; /* Ensures proper alignment */
+    align-items: center; /* Centers icon vertically */
+    justify-content: center; /* Centers icon horizontally */
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds shadow for depth */
+    transform-style: preserve-3d; /* Preserves 3D space for child elements */
+}
+
+.footer__socials a:hover {
+    opacity: 0.9;
+    transform: translateY(-0.5rem) rotateY(15deg); /* 3D hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Increased shadow on hover */
+    animation: bounce 0.3s ease; /* Bouncing animation on hover */
+}
+
+.footer__copyright {
+    color: white;
+    text-align: center;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+    padding: 1.5rem 0;
+    position: relative; /* Positioning for pseudo-element */
+}
+
+.footer__copyright::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5); /* Light line effect */
+    transform: translateX(-50%);
+    animation: lineGrow 0.5s ease-in-out; /* Animation for line */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Slight upward motion */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.1); /* Slight bounce effect */
+    }
+}
+
+@keyframes lineGrow {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    .footer__socials {
+        margin: 2rem auto; /* Adjusts margin on smaller screens */
+    }
+}

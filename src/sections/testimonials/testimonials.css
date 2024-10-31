@@ -1,0 +1,66 @@
+#testimonials {
+    padding-bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 204, 204, 0.7), rgba(204, 204, 255, 0.7)); /* Soft gradient background */
+    border-radius: 10px; /* Rounded corners for the section */
+    padding: 2rem; /* Added padding for spacing */
+}
+
+.swiper {
+    height: 30rem;
+    padding-top: 1rem;
+}
+
+.swiper-slide {
+    cursor: grab;
+    background: #f9f9f9; /* Light gray background for the slide */
+    border-radius: 10px; /* Rounded corners for the slide */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.3s ease; /* Smooth transform transition */
+}
+
+.swiper-slide:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.testimonial__client {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.testimonial__client-avatar {
+    width: 3rem; /* Increased size for visibility */
+    aspect-ratio: 1/1;
+    border-radius: 50%; /* Make it circular */
+    overflow: hidden;
+    transition: transform 0.3s ease; /* Smooth transform transition */
+    border: 2px solid var(--color-primary); /* Border for avatar */
+}
+
+.testimonial__client-avatar:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+}
+
+.swiper-pagination {
+    margin-bottom: 2rem; /* Adjust spacing */
+}
+
+.swiper-pagination-bullet {
+    background: var(--color-primary); /* Primary color for bullets */
+    opacity: 0.8; /* Slight transparency */
+    width: 12px; /* Wider bullet for better visibility */
+    height: 12px; /* Higher bullet for better visibility */
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--color-secondary); /* Different color for active bullet */
+}
+
+/* Define color variables */
+:root {
+    --color-primary: #ff6f61; /* Coral */
+    --color-secondary: #6a5acd; /* Slate Blue */
+    --border-radius-2: 10px; /* Consistent border radius */
+    --transition: all 0.3s ease; /* Transition effect */
+} 
